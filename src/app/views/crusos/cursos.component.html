@@ -1,0 +1,14 @@
+<div class="row">
+  <p-table [value]="teste">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>nome</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-teste>
+        <tr>
+            <td>{{teste.nome}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+</div>
