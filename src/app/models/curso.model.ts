@@ -1,10 +1,10 @@
 export class MCursos {
   codigo?: number;
-  descricaoDoAssunto?: string;
-  dataInicio?: Date;
-  dataTermino?: Date;
-  quantidadeAlunosPorTurma?: number;
-  categoria?: number;
+  descricao_do_assunto?: string;
+  data_inicio?: Date;
+  data_termino?: Date;
+  quantidade_alunos_turma?: number;
+  codigo_categoria?: number;
   constructor(data?: MCursos) {
     if (data) {
       Object.keys(data).forEach((f) => {

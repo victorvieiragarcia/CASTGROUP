@@ -1,0 +1,91 @@
+
+<div class="row">
+  <p-table [columns]="cols" [value]="cursos">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+            <th>
+              Ações
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+            </td>
+            <td>
+              <button type="button" pButton pRipple icon="pi pi-pencil" (click)="selectCurso(rowData)"></button>
+              <button class="ml-2 p-button-danger" type="button" pButton pRipple icon="pi pi-trash" (click)="delete(rowData)"></button>
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>
+<div class="row">
+  <form [formGroup]="form" class="mt-4">
+
+    <div class="row ml-3">
+      <div class="p-field p-fluid col-md-3">
+        <span class="p-float-label">
+          <input formControlName="codigo" id="float-input" type="text" pInputText>
+          <label for="float-input">Código</label>
+        </span>
+      </div>
+      <div class="p-field p-fluid col-md-9">
+        <span class="p-float-label">
+          <input formControlName="descricao_do_assunto" [ngClass]="{ 'p-invalid': form.get('descricao_do_assunto').invalid && isSubmited }" id="float-input" type="text" pInputText>
+          <label for="float-input">Descrição do assunto</label>
+        </span>
+        <small *ngIf="form.get('descricao_do_assunto').invalid && isSubmited"  id="username-help" class="p-invalid">Descrição do assunto é obrigatório.</small>
+      </div>
+
+    </div>
+
+    <div class="row ml-3 mt-4">
+      <div class="col-md-6">
+        <span class="p-float-label">
+          <p-calendar formControlName="data_inicio" id="float-data" [ngClass]="{ 'p-invalid': form.get('data_inicio').invalid && isSubmited }"></p-calendar>
+          <label for="float-data">Data de início</label>
+        </span>
+        <small *ngIf="form.get('data_inicio').invalid && isSubmited"  id="username-help" class="p-invalid">Data de início é obrigatório.</small>
+      </div>
+      <div class="col-md-6">
+        <span class="p-float-label">
+          <p-calendar formControlName="data_termino" id="float-data" [ngClass]="{ 'p-invalid': form.get('data_termino').invalid && isSubmited }"></p-calendar>
+          <label for="float-data">Data de término</label>
+        </span>
+        <small *ngIf="form.get('data_termino').invalid && isSubmited"  id="username-help" class="p-invalid">Data de término é obrigatório.</small>
+      </div>
+    </div>
+
+    <div class="row ml-3 mt-4">
+      <div class="col-md-6">
+        <p-dropdown styleClass="col-md-12" placeholder="Categoria" [options]="categorias" optionLabel="descricao" formControlName="codigo_categoria"></p-dropdown>
+      </div>
+      <div class="col-md-6">
+        <span class="p-float-label">
+          <input formControlName="quantidade_alunos_turma" id="float-input" type="number" [ngClass]="{ 'p-invalid': form.get('quantidade_alunos_turma').invalid && isSubmited }" pInputText>
+          <label for="float-input">Qtd. de alunos por turma</label>
+        </span>
+        <small *ngIf="form.get('quantidade_alunos_turma').invalid && isSubmited"  id="username-help" class="p-invalid">Qtd. de alunos por turma é obrigatório.</small>
+      </div>
+    </div>
+
+    <div *ngIf="!form.get('codigo').value" class="col-md-12 mt-3 ml-3">
+      <button pButton pRipple type="button" label="Salvar" class="p-button-success btn-block" (click)="salvar()"></button>
+    </div>
+    <div *ngIf="form.get('codigo').value" class="row ml-3 mt-3">
+      <div class="col-md-6">
+        <button pButton pRipple type="button" label="Editar" class="p-button-success btn-block" (click)="editar()"></button>
+      </div>
+      <div class="col-md-6">
+        <button pButton type="button" label="Cancelar" class="p-button-secondary p-button-text btn-block" (click)="limparDados()"></button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-toast [msg]="teste"></app-toast>
