@@ -4,13 +4,12 @@ import { CategoriaService } from 'src/app/services/categoria.service';
 import { CursosService } from 'src/app/services/cursos.service';
 import { MCursos } from '../../models/curso.model';
 import { MCategoria } from '../../models/categoria.model';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-cursos',
   templateUrl: './cursos.component.html',
-  styleUrls: ['./cursos.component.css'],
-  providers: [MessageService]
+  styleUrls: ['./cursos.component.css']
 })
 export class CursosComponent implements OnInit {
   msgToast = null;
@@ -26,7 +25,6 @@ export class CursosComponent implements OnInit {
   constructor(private cursosService: CursosService,
     private categoriaService: CategoriaService,
     private formBuilder: FormBuilder,
-    private messageService: MessageService,
     private primengConfig: PrimeNGConfig) { }
 
   ngOnInit() {
