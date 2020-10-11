@@ -13,7 +13,7 @@ import { MessageService, PrimeNGConfig } from 'primeng/api';
   providers: [MessageService]
 })
 export class CursosComponent implements OnInit {
-  teste = null;
+  msgToast = null;
   isSubmited = false;
   form: FormGroup;
   cursos: MCursos[];
@@ -71,9 +71,9 @@ export class CursosComponent implements OnInit {
       this.cursos.push(reponse);
       this.limparDados();
      }, (error) =>{
-       this.teste = error.error;
+       this.msgToast = error.error;
      });
-     this.teste = null;
+     this.msgToast = null;
   }
 
   delete(curso) {
@@ -92,9 +92,9 @@ export class CursosComponent implements OnInit {
       this.getCursos();
       this.limparDados();
      }, (error) =>{
-      this.teste = error.error;
+      this.msgToast = error.error;
     });
-    this.teste = null;
+    this.msgToast = null;
   }
 
   selectCurso(curso) {
