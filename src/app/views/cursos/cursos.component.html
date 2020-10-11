@@ -47,14 +47,14 @@
     <div class="row ml-3 mt-4">
       <div class="col-md-6">
         <span class="p-float-label">
-          <p-calendar formControlName="data_inicio" id="float-data" [ngClass]="{ 'p-invalid': form.get('data_inicio').invalid && isSubmited }"></p-calendar>
+          <p-calendar formControlName="data_inicio" [locale]="ptBr" id="float-data" [ngClass]="{ 'p-invalid': form.get('data_inicio').invalid && isSubmited }"></p-calendar>
           <label for="float-data">Data de início</label>
         </span>
         <small *ngIf="form.get('data_inicio').invalid && isSubmited"  id="username-help" class="p-invalid">Data de início é obrigatório.</small>
       </div>
       <div class="col-md-6">
         <span class="p-float-label">
-          <p-calendar formControlName="data_termino" id="float-data" [ngClass]="{ 'p-invalid': form.get('data_termino').invalid && isSubmited }"></p-calendar>
+          <p-calendar formControlName="data_termino" [locale]="ptBr" id="float-data" [ngClass]="{ 'p-invalid': form.get('data_termino').invalid && isSubmited }"></p-calendar>
           <label for="float-data">Data de término</label>
         </span>
         <small *ngIf="form.get('data_termino').invalid && isSubmited"  id="username-help" class="p-invalid">Data de término é obrigatório.</small>

@@ -22,12 +22,26 @@ export class CursosComponent implements OnInit {
     { field: 'descricao_do_assunto', header: 'Nome' }
   ];
 
+  ptBr: any;
+
   constructor(private cursosService: CursosService,
     private categoriaService: CategoriaService,
     private formBuilder: FormBuilder,
     private primengConfig: PrimeNGConfig) { }
 
   ngOnInit() {
+    this.ptBr = {
+      firstDayOfWeek: 0,
+      dayNames: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      dayNamesShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      dayNamesMin: ["Do","Se","Te","Qu","Qu","Se","Sa"],
+      monthNames: [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro" ],
+      monthNamesShort: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
+      today: 'Today',
+      clear: 'Clear',
+      dateFormat: 'dd/mm/yy',
+      weekHeader: 'Wk'
+  };
     this.primengConfig.ripple = true;
     this.getCursos();
     this.categoriaService.listAll().subscribe((categorias: MCategoria[]) => {
